@@ -1,0 +1,54 @@
+#============================================================================
+# MakeFile:  DealingCardsMake
+#      Author:  Alejandro Martinez
+#  Student ID:  3625175
+#  Assignment:  Assigment # 3 - Dealer Card
+
+#      Course:  COP 4337 Programming 3
+#     Section:  UO3 1198
+#  Instructor:  William Feild
+#    Due Date:  October 15, 2019, at the beginning of class
+
+#	I hereby certify that this collective work is my own
+#	and none of it is the work of any other person or entity.
+
+# 	Alejandro Martinez
+	
+#  Compile/Run: Make sure that this Makefile is in the same
+#              directory as main.c & deckCardsFunction.c
+#----------------------------------------------------------------------------
+
+#Purpose:
+
+#This makefile is made to compile all the source files at once, making it
+# more readable. Also it creates the executable file to run the program.
+
+#Sources
+
+#This makefile was created using the online documentation provided in class.
+
+#Explanation
+
+# Macros were created to represent the source files, output files and gcc
+# Three dependencies were created (1) "clean" cleans or removes the executable
+# file, (2) the "build" compiles the file -std=c99 is used to not have issues
+# with the ASCII in compilers that do not read unicode ASCII, (3) and lastly
+# the compile dependency that cleans and compiles the code.
+#----------------------------------------------------------------------------
+
+CC = gcc
+
+SRC_FILES_ONE = main.c
+
+SRC_FILES_TWO = dealerFunctions.c
+
+OUTPUT_FILE = -o Game.out
+
+clean:
+	rm -f *.o core
+
+build: $(SRC_FILES_ONE) $(SRC_FILES_TWO)
+	$(CC) -std=c99 $(SRC_FILES_ONE) $(SRC_FILES_TWO)  $(OUTPUT_FILE)
+
+compile: clean build
+
