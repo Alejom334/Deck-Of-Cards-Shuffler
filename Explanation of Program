@@ -1,0 +1,139 @@
+This explanation of program is also going to be in the source file of main.c
+
+/*=============================================================================$
+|   Source code: main.c
+|   Author:  Alejandro Martinez
+|   Student ID: 3625175
+|   Assignment:  Program #3 Dealer Card
+|
+|   Course:  [COP 4338 (Programming 3)]
+|   Section:  [U04 1198]
+|   Instructor:  William Feild
+|   Due Date:  [10/15/2019], at the beginning of class
+|
+|    I hereby certify that this collective work is my own
+|   and none of it is the work of any other person or entity.
+|   ______________________________________ [Alejandro Martinez]
+|
+|  Language:  [C]
+|  Compile/Run:
+|
+|   REGULAR COMPILATION (NO MAKE-FILE):
+|
+|   Please recall that we have header file named deckCardsFunctions.h
+|   that must be in the same directory/folder as the files main.c and
+|   dealerFunctions.c. After having all files in the folder the program
+|   should compile with the following line of code
+|   "-std=c99" is used to prevent any errors for compilers that do not
+|   compile ASCII unicode characters.
+|   Both files must be compiled together.
+|
+|   gcc -std=c99 GameOfCards2.c deckCardsFunctions.h -o Game2.out
+|
+|   MAKEFILE COMPILATION:
+|
+|   If one wants to compile the file using the Makefile called CardDeckMakeFile,
+|   make sure that the file CardDeckMakeFile is in the same directory of
+|   the other source files main.c and dealerFunctions.c and header file
+|   deckCardsFunctions.h then compile the make file using the following command:
+|
+|   make -f CardDeckMakeFile compile
+|  +-------------------------------------------------------------------------
+|
+|  Description: This simulates how a deck of cards is dealt in a game. At the
+|               of compiling the user is required to input a number of cards
+|               each player is suppose to have, and the number of players the
+|               game will have. Here the whole input will be checked. The user
+|               is suppose to input numbers from [1-13] for both the number of
+|               cards and the number of players. However, the maximum number
+|               of cards that can be dealt is 52.
+|
+|               After the input is validated, the program will generate a deck
+|               of cards. This deck of cards is generated from the
+|               LOWER_BOUND_OF_GENERATED_ARRAY (1) to
+|               HIGHER_BOUND_OF_GENERATED_ARRAY (52). The reason why this
+|               deck array did not started at 0 was to facilitate further
+|               computations.
+|
+|               After the array is generated, the following internal
+|               manipulation
+|               was done in order to print the card number with the required
+|               order from the assignment. From the Ace to the King with their
+|               respective Suits.
+|
+|               The program took the first 13 elements of the array and assign
+|               them to be of the suit of hearts, the next 13 of the suit of
+|               diamonds, the next 13 of suit of clubs and the next 13 of the
+|               suit of spades. Then the face of the letter was found using
+|               mod manipulation to match exactly the constant array of chars
+|               defined in the main.
+|
+|               The shuffle of the array was used according the following link
+|               that expresses how to use the random function to generate a
+|               random variable.
+|
+|               For more on shuffling, see Knuth (or Fisher-Yates) Shuffle:
+|
+|https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+|
+|               The basic idea behind this way shuffling is to generated a
+|               a random location for the array to swap the card. In order
+|               to be really random the seed in the random function happens to
+|               to be the time. Then a really random deck is generated and then
+|               printed. After printing the new shuffle array, cards can now be
+|               dealt to everyone in the table.
+|
+|
+|               It is important to mention that this program has four files in the
+|               directory.
+|               #1. main.c is the file where main is and also has user validation
+|                   functions
+|               #2. dealerFunctions.c have the functions for dealing the cards
+|
+|        Input:  Program will receive input from the command line. The command
+|                line will only receive integers from [LOWER_BOUND -
+|                UPPER_BOUND] or [1-13]. Anything that is not an integer or a
+|                number within these boundaries will not be validated.
+|
+|
+|	    Output:  The output wil be organized in 3 sections. The first section
+|                will be the building of the ordered deck as required by
+|                the assignment. The second section of the output will
+|                consist in the shuffle cards. The procedure done to shuffle
+|                the cards was done using te link reference below:
+| https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+|
+|                 The last section of the output happens to be the hands that
+|                 will be played according to the number of cards and number
+|                 of players the user decided to put at  the beginning, at the
+|                 file execution. These hands will be displayed in a two
+|                 dimensional array. Initial column being the number of players
+|                 and following columns being the hands given to every player.
+|
+|     Process:   The program's steps are as follows:
+|
+|                1. The user in executing should put in the command line the
+|                   number of cards and the number of players.
+|                2. There would be a user validation in this step. User can
+|    `               only put two numbers within
+|                    the range of [LOWER_BOUND-UPPER_BOUND]
+|                    or [1-13]. Any other input that does not happened to be
+|                    within these boundaries or is not an integer will not work
+|                    and the program will terminate.
+|                3. If the input is valid, the ordered deck is generated.
+|                4. Then the deck is shuffle and printed.
+|                5. Then the cards are given to the players according to the
+|                   input that was given at the beginning.
+|
+|.  Source of Formulas Required For Calculations:
+|                Refer to the link below for full explanation on how to
+|                  shuffle a deck of cards
+| https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+|
+|   Required Features Not Included:
+|                Not included: All required features are included.
+|
+|   Known Bugs:  Not know Bugs in this program
+|
+|  *=====================================================================
+|  */
